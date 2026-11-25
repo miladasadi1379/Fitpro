@@ -1,0 +1,728 @@
+/* ==========================================
+   FitPro - Global Styles (Tailwind v4)
+   ========================================== */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* =============================================================
+      فونت‌ها
+   ============================================================= */
+@font-face {
+    font-family: BYekan;
+    src: url(../assets/fonts/BYekan.ttf);
+}
+
+@font-face {
+    font-family: BHoma;
+    src: url(../assets/fonts/BHoma.ttf);
+}
+
+@font-face {
+    font-family: Inter;
+    src: url(../assets/fonts/Inter.otf);
+}
+
+.BYekan {
+    font-family: "BYekan" !important;
+}
+
+.Inter {
+    font-family: "Inter" !important;
+}
+
+.Vazirmatn {
+    font-family: "Vazirmatn" !important;
+}
+
+body {
+    background: var(--background);
+    color: var(--foreground);
+    border: 0;
+    font-family: "BHoma", Verdana, Helvetica, sans-serif;
+    overflow-x: hidden !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+
+    button:not(:disabled),
+    [role="button"]:not(:disabled) {
+        cursor: pointer;
+    }
+
+    * {
+        @apply border-border;
+    }
+
+    html {
+        box-sizing: border-box;
+        height: 100%;
+    }
+
+    *,
+    *:before,
+    *:after {
+        box-sizing: inherit;
+    }
+}
+
+@theme {
+    --font-display: "Verdana", "Verdana";
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    /* پالت FitPro */
+    --color-forest: var(--forest);
+    --color-sage: var(--sage);
+
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
+    --font-heading: var(--font-geist-sans);
+
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* =============================================================
+      تم روشن
+   ============================================================= */
+:root {
+    /* پایه shadcn */
+    --background: #d8e9c9;
+    --foreground: #0a0a0a;
+    --card: #8da68e;
+    --card-foreground: #0a0a0a;
+    --popover: #ffffff;
+    --popover-foreground: #0a0a0a;
+    --primary: #1c3a27;
+    --primary-foreground: #2e3330;
+    --secondary: #8da68e;
+    --secondary-foreground: #171717;
+    --muted: #f5f5f5;
+    --muted-foreground: #737373;
+    --accent: #f5f5f5;
+    --accent-foreground: #171717;
+    --destructive: #e40014;
+    --border: #8da68e;
+    --input: #e5e5e5;
+    --ring: #a1a1a1;
+    --radius: 0.625rem;
+
+    --forest: #1c3a27;
+    --sage: #8da68e;
+
+    /* هیرو */
+    --hero-card: #ffffff;
+    --hero-line: #e3efe8;
+    --hero-text: var(--forest);
+    --hero-muted: #4a635a;
+    --hero-meta: #5f7a66;
+
+    /* اکسنت هیرو */
+    --hero-accent: #16a34a;
+    --hero-accent-hover: #12863d;
+    --hero-accent-ink: #ffffff;
+
+    /* بج و دکمه‌ها */
+    --hero-badge-bg: var(--forest);
+    --hero-badge-ink: var(--sage);
+    --btn-soft-bg: var(--forest);
+    --btn-soft-ink: #ffffff;
+    --btn-soft-line: rgba(141, 166, 142, 0.5);
+    --btn-soft-glow: none;
+    --btn-glow: 0 12px 26px -16px rgba(22, 163, 74, 0.55);
+
+    /* سطح بخش‌های صفحه */
+    --page: #fff8e2;
+    --wash: #b7eecc;
+    --surface: #ffffff;
+    --line: #e3efe8;
+
+    /* نوبار */
+    --nav-bg: rgba(255, 248, 226, 0.46);
+    --nav-line: rgba(141, 166, 142, 0.45);
+    --nav-ink: #1c3a27;
+    --nav-ink-soft: #4a635a;
+    --nav-hover-bg: rgba(141, 166, 142, 0.18);
+    --nav-accent-bg: #1c3a27;
+    --nav-accent-ink: #ffffff;
+    --nav-shadow: 0 18px 40px -30px rgba(28, 58, 39, 0.45);
+    --nav-menu-bg: rgba(255, 248, 226, 0.97);
+    --nav-danger: #b3261e;
+    --nav-danger-bg: rgba(179, 38, 30, 0.1);
+
+    /* داشبورد */
+    --dash-bg: #fff8e2;
+    --dash-surface: #ffffff;
+    --dash-line: #e3efe8;
+    --dash-ink: var(--hero-text);
+    --dash-muted: var(--hero-muted);
+    --dash-chip-bg: #eef7ef;
+    --dash-chip-ink: var(--hero-text);
+    --dash-pop-bg: #ffffff;
+    --dash-shadow: 0 20px 50px -34px rgba(28, 58, 39, 0.35);
+    --dash-side-image: linear-gradient(180deg, #1c3a27 0%, #13291c 100%);
+    --dash-side-line: rgba(141, 166, 142, 0.28);
+    --dash-side-ink: rgba(234, 247, 240, 0.72);
+    --dash-side-ink-strong: #ffffff;
+    --dash-side-hover: rgba(255, 255, 255, 0.08);
+    --dash-side-active-bg: rgba(141, 166, 142, 0.3);
+    --dash-side-active-ink: #ffffff;
+    --dash-side-mark: #b7eecc;
+}
+
+/* =============================================================
+      تم تیره
+   ============================================================= */
+.dark {
+    /* پایه shadcn */
+    --background: #0a0a0a;
+    --foreground: #f1f3ee;
+    --card: #171717;
+    --card-foreground: #fafafa;
+    --popover: #171717;
+    --popover-foreground: #fafafa;
+    --primary: #8da68e;
+    --primary-foreground: #2e3330;
+    --secondary: #2e3330;
+    --secondary-foreground: #fafafa;
+    --muted: #262626;
+    --muted-foreground: #a1a1a1;
+    --accent: #262626;
+    --accent-foreground: #fafafa;
+    --destructive: #ff6568;
+    --border: #8da68e;
+    --input: rgba(255, 255, 255, 0.15);
+    --ring: #737373;
+
+    /* سطح و متن هیرو */
+    --hero-card: #050f0a;
+    --hero-line: rgba(57, 255, 106, 0.14);
+    --hero-text: #eaf7f0;
+    --hero-muted: #9aa79c;
+    --hero-meta: var(--sage);
+
+    /* اکسنت هیرو */
+    --hero-accent: #39ff6a;
+    --hero-accent-hover: #5cff85;
+    --hero-accent-ink: #042315;
+
+    /* بج و دکمه‌ها */
+    --hero-badge-bg: rgba(57, 255, 106, 0.12);
+    --hero-badge-ink: #39ff6a;
+    --btn-soft-bg: rgba(57, 255, 106, 0.05);
+    --btn-soft-ink: #39ff6a;
+    --btn-soft-line: rgba(57, 255, 106, 0.55);
+    --btn-soft-glow: 0 0 22px -4px rgba(57, 255, 106, 0.35);
+    --btn-glow: 0 12px 30px -10px rgba(57, 255, 106, 0.55);
+
+    /* سطح بخش‌های صفحه */
+    --page: #050f0a;
+    --wash: #06130c;
+    --surface: #0b1e16;
+    --line: rgba(57, 255, 106, 0.14);
+
+    /* نوبار */
+    --nav-bg: rgba(5, 15, 10, 0.42);
+    --nav-line: rgba(57, 255, 106, 0.22);
+    --nav-ink: #eaf7f0;
+    --nav-ink-soft: #9aa79c;
+    --nav-hover-bg: rgba(57, 255, 106, 0.12);
+    --nav-accent-bg: #39ff6a;
+    --nav-accent-ink: #042315;
+    --nav-shadow: 0 0 44px -20px rgba(57, 255, 106, 0.45);
+    --nav-menu-bg: rgba(5, 15, 10, 0.97);
+    --nav-danger: #ff6b63;
+    --nav-danger-bg: rgba(255, 107, 99, 0.12);
+
+    /* داشبورد */
+    --dash-bg: var(--page);
+    --dash-surface: var(--surface);
+    --dash-line: var(--line);
+    --dash-chip-bg: rgba(57, 255, 106, 0.08);
+    --dash-pop-bg: #0b1e16;
+    --dash-shadow: 0 24px 60px -40px rgba(0, 0, 0, 0.85);
+    --dash-side-image: linear-gradient(180deg, #06130c 0%, #040d08 100%);
+    --dash-side-line: rgba(57, 255, 106, 0.14);
+}
+
+/* =============================================================
+      اسکرول‌بار و فوکوس
+   ============================================================= */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--muted);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--muted-foreground);
+}
+
+*:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* =============================================================
+      یوتیلیتی‌های عمومی
+   ============================================================= */
+@layer components {
+    .flexC {
+        display: flex !important;
+        place-content: center !important;
+        place-items: center !important;
+    }
+
+    .navLink {
+        @apply flex h-11 items-center px-4 text-sm transition-colors max-sm:flex-1 max-sm:px-2 max-sm:text-[13px] dark:text-background;
+    }
+}
+
+/* =============================================================
+      نوبار
+   ============================================================= */
+.navbarTop {
+    position: fixed !important;
+    left: 10% !important;
+    top: 20px !important;
+    right: 10% !important;
+    z-index: 200 !important;
+}
+
+.navbarB {
+    position: fixed;
+    left: 5%;
+    top: 85% !important;
+    right: 5%;
+    z-index: 50 !important;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-shell {
+    background-color: var(--nav-bg);
+    border: 1px solid var(--nav-line);
+    box-shadow: var(--nav-shadow);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+}
+
+.nav-btn {
+    color: var(--nav-ink);
+    background-color: transparent;
+    border: 1px solid var(--nav-line);
+}
+
+.nav-btn:hover {
+    color: var(--nav-ink);
+    background-color: var(--nav-hover-bg);
+    border-color: var(--nav-line);
+}
+
+.navLink:hover {
+    color: var(--nav-ink);
+    background-color: var(--nav-hover-bg);
+}
+
+/* منوی کشویی کاربر */
+.nav-menu {
+    --nav-bg: rgba(255, 248, 226, 0.82);
+    --nav-line: rgba(141, 166, 142, 0.45);
+    --nav-ink: #1c3a27;
+    --nav-ink-soft: #4a635a;
+    --nav-hover-bg: rgba(141, 166, 142, 0.18);
+    --nav-accent-bg: #1c3a27;
+    --nav-accent-ink: #ffffff;
+    --nav-shadow: 0 18px 40px -30px rgba(28, 58, 39, 0.45);
+    color: var(--nav-ink);
+    background-color: var(--nav-menu-bg);
+    border: 1px solid var(--nav-line);
+    box-shadow: var(--nav-shadow);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+}
+
+.dark .nav-menu {
+    --nav-bg: rgba(5, 15, 10, 0.82);
+    --nav-line: rgba(57, 255, 106, 0.22);
+    --nav-ink: #eaf7f0;
+    --nav-ink-soft: #9aa79c;
+    --nav-hover-bg: rgba(57, 255, 106, 0.12);
+    --nav-accent-bg: #39ff6a;
+    --nav-accent-ink: #042315;
+    --nav-shadow: 0 0 44px -20px rgba(57, 255, 106, 0.45);
+}
+
+.nav-menu-item {
+    color: var(--nav-ink);
+    border-radius: calc(var(--radius) * 1.6);
+    transition: color 160ms ease, background-color 160ms ease;
+}
+
+.nav-menu-item:hover,
+.nav-menu-item:focus,
+.nav-menu-item[data-highlighted] {
+    color: var(--nav-ink);
+    background-color: var(--nav-hover-bg);
+}
+
+.nav-menu-danger,
+.nav-menu-danger:hover,
+.nav-menu-danger:focus,
+.nav-menu-danger[data-highlighted] {
+    color: var(--nav-danger);
+}
+
+.nav-menu-danger:hover,
+.nav-menu-danger:focus,
+.nav-menu-danger[data-highlighted] {
+    color: var(--nav-danger);
+    background-color: var(--nav-danger-bg);
+}
+
+.nav-menu-danger svg {
+    color: inherit;
+}
+
+.nav-menu-sep {
+    background-color: var(--nav-line);
+}
+
+/* =============================================================
+      کلاس‌های رنگ
+   ============================================================= */
+.TextDarkG {
+    color: var(--nav-ink);
+}
+
+.TextWG {
+    color: var(--nav-accent-ink);
+}
+
+.bgDarkG {
+    background-color: var(--nav-accent-bg);
+}
+
+/* =============================================================
+      هیرو
+   ============================================================= */
+.hero-surface {
+    background-color: var(--hero-card);
+    border: 1px solid var(--hero-line);
+    overflow: hidden;
+    box-shadow: 0 24px 60px -32px rgba(28, 58, 39, 0.35);
+}
+
+.dark .hero-surface {
+    background-color: var(--hero-card);
+    border-color: var(--hero-line);
+    background-image: radial-gradient(44% 62% at 76% 54%, rgba(34, 197, 94, 0.26), transparent 70%),
+        radial-gradient(72% 92% at 78%, rgba(57, 255, 106, 0.09), transparent 76%),
+        linear-gradient(180deg, #050f0a 0%, #06130c 55%, #040c08 100%);
+    box-shadow: 0 30px 90px -52px rgba(57, 255, 106, 0.22);
+}
+
+.hero-badge {
+    background-color: var(--hero-badge-bg);
+    color: var(--hero-badge-ink);
+}
+
+.hero-title {
+    color: var(--hero-text);
+}
+
+.hero-title-mark {
+    color: var(--hero-accent);
+}
+
+.hero-sub {
+    color: var(--hero-muted);
+}
+
+.hero-panel {
+    background-image: linear-gradient(180deg, #13291c 0%, var(--forest) 100%);
+    color: #eaf7f0;
+    border: 1px solid rgba(141, 166, 142, 0.28);
+}
+
+.dark .hero-panel {
+    border-color: var(--hero-line);
+    background-image: linear-gradient(180deg, #0b1e16 0%, #071a11 100%);
+}
+
+/* دکمه‌ها */
+.btn-primary {
+    background-color: var(--hero-accent);
+    color: var(--hero-accent-ink);
+    box-shadow: var(--btn-glow);
+    border: 1px solid transparent;
+    transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--hero-accent-hover);
+}
+
+.btn-primary:active {
+    transform: translateY(1px);
+}
+
+.btn-primary:focus-visible {
+    outline: 2px solid var(--hero-accent);
+    outline-offset: 3px;
+}
+
+.btn-soft {
+    background-color: var(--btn-soft-bg);
+    color: var(--btn-soft-ink);
+    border: 1px solid var(--btn-soft-line);
+    box-shadow: var(--btn-soft-glow);
+    transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.btn-soft:hover {
+    border-color: var(--btn-soft-line);
+    box-shadow: 0 0 28px -2px rgba(57, 255, 106, 0.5);
+}
+
+.btn-soft:focus-visible {
+    outline: 2px solid var(--sage);
+    outline-offset: 3px;
+}
+
+/* =============================================================
+      بخش‌های عمومی صفحه
+   ============================================================= */
+.fp-page {
+    background-color: var(--page);
+}
+
+.fp-wash {
+    background-color: var(--wash);
+}
+
+.fp-card {
+    background-color: var(--surface);
+    border: 1px solid var(--line);
+}
+
+.fp-heading {
+    color: var(--hero-text);
+}
+
+.fp-muted {
+    color: var(--hero-muted);
+}
+
+.fp-meta {
+    color: var(--hero-meta);
+}
+
+.fp-accent-ink {
+    color: var(--hero-accent);
+}
+
+.fp-divider {
+    border-color: var(--line);
+}
+
+/* هاله سبز وسط هر بخش */
+.fp-glow {
+    position: relative;
+    isolation: isolate;
+}
+
+.fp-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(52% 48% at 50% 46%,
+            rgba(22, 163, 74, 0.14) 0%,
+            rgba(22, 163, 74, 0.05) 45%,
+            transparent 72%);
+}
+
+.dark .fp-glow::before {
+    background: radial-gradient(52% 48% at 50% 46%,
+            rgba(57, 255, 106, 0.18) 0%,
+            rgba(34, 197, 94, 0.08) 45%,
+            transparent 72%);
+}
+
+/* =============================================================
+      داشبورد
+   ============================================================= */
+.dash-page {
+    background-color: var(--dash-bg);
+    color: var(--dash-ink);
+}
+
+.dash-side {
+    background-image: var(--dash-side-image);
+    border-inline-end: 1px solid var(--dash-side-line);
+    box-shadow: var(--dash-shadow);
+}
+
+.dash-logo {
+    color: var(--dash-side-ink-strong);
+}
+
+.dash-logo-mark {
+    color: var(--dash-side-mark);
+}
+
+.dash-link {
+    color: var(--dash-side-ink);
+    border-radius: calc(var(--radius) * 1.6);
+    transition: color 160ms ease, background-color 160ms ease;
+}
+
+.dash-link:hover {
+    color: var(--dash-side-ink-strong);
+    background-color: var(--dash-side-hover);
+}
+
+.dash-link[data-active="true"] {
+    color: var(--dash-side-active-ink);
+    background-color: var(--dash-side-active-bg);
+    font-weight: 600;
+}
+
+.dash-tip {
+    color: var(--nav-accent-ink);
+    background-color: var(--nav-accent-bg);
+    border: 1px solid var(--nav-line);
+}
+
+.dash-control {
+    color: var(--dash-ink);
+    background-color: var(--dash-surface);
+    border: 1px solid var(--dash-line);
+    transition: color 160ms ease, background-color 160ms ease;
+}
+
+.dash-control:hover {
+    color: var(--dash-ink);
+    background-color: var(--dash-chip-bg);
+}
+
+.dash-pop {
+    color: var(--dash-ink);
+    background-color: var(--dash-pop-bg);
+    border: 1px solid var(--dash-line);
+}
+
+.dash-card {
+    color: var(--dash-ink);
+    background-color: var(--dash-surface);
+    border: 1px solid var(--dash-line);
+    box-shadow: var(--dash-shadow);
+}
+
+.dash-heading {
+    color: var(--dash-ink);
+}
+
+.dash-muted {
+    color: var(--dash-muted);
+}
+
+.dash-chip {
+    color: var(--dash-chip-ink);
+    background-color: var(--dash-chip-bg);
+}
+
+.dash-panel-muted {
+    color: rgba(234, 247, 240, 0.75);
+}
+
+/* =============================================================
+      تقویم شمسی
+   ============================================================= */
+.green-dark-calendar.rmdp-wrapper {
+    background-color: var(--dash-pop-bg) !important;
+    color: var(--dash-ink) !important;
+    box-shadow: none !important;
+    border-radius: 0.75rem !important;
+    padding: 8px;
+}
+
+.green-dark-calendar .rmdp-header-values,
+.green-dark-calendar .rmdp-day span {
+    color: var(--dash-ink) !important;
+}
+
+.green-dark-calendar .rmdp-week-day {
+    color: var(--hero-meta) !important;
+    font-weight: 600;
+}
+
+.green-dark-calendar .rmdp-day:not(.rmdp-disabled):not(.rmdp-day-hidden) span:hover {
+    background-color: var(--dash-chip-bg) !important;
+    color: var(--dash-ink) !important;
+}
+
+.green-dark-calendar .rmdp-day.rmdp-selected span:not(.highlight) {
+    background-color: var(--hero-accent) !important;
+    color: var(--hero-accent-ink) !important;
+    font-weight: bold;
+}
+
+.green-dark-calendar .rmdp-day.rmdp-today span {
+    background-color: var(--dash-chip-bg) !important;
+    border: 1px solid var(--hero-accent);
+}
+
+.green-dark-calendar .rmdp-arrow {
+    border-color: var(--hero-accent) !important;
+}

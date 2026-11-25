@@ -1,0 +1,534 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* =============================================================
+   فونت‌ها
+============================================================= */
+@font-face {
+    font-family: BYekan;
+    src: url(../assets/fonts/BYekan.ttf);
+}
+
+@font-face {
+    font-family: Inter;
+    src: url(../assets/fonts/Inter.otf);
+}
+
+.BYekan {
+    font-family: 'BYekan' !important;
+}
+
+.Inter {
+    font-family: 'Inter' !important;
+}
+
+body {
+    overflow-x: hidden !important;
+    border: 0;
+    font-family: 'BHoma', Verdana, Helvetica, sans-serif;
+}
+
+@layer base {
+
+    button:not(:disabled),
+    [role="button"]:not(:disabled) {
+        cursor: pointer;
+    }
+
+    * {
+        @apply border-border;
+    }
+
+    @theme {
+        --font-display: "Verdana", 'Verdana';
+    }
+
+    @theme inline {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+        --color-card: var(--card);
+        --color-card-foreground: var(--card-foreground);
+        --color-popover: var(--popover);
+        --color-popover-foreground: var(--popover-foreground);
+        --color-primary: var(--primary);
+        --color-primary-foreground: var(--primary-foreground);
+        --color-secondary: var(--secondary);
+        --color-secondary-foreground: var(--secondary-foreground);
+        --color-muted: var(--muted);
+        --color-muted-foreground: var(--muted-foreground);
+        --color-accent: var(--accent);
+        --color-accent-foreground: var(--accent-foreground);
+        --color-destructive: var(--destructive);
+        --color-border: var(--border);
+        --color-input: var(--input);
+        /* پالت FitPro */
+        --font-sans: var(--font-sans);
+        --font-mono: var(--font-geist-mono);
+        --font-heading: var(--font-sans);
+        --color-forest: var(--forest);
+        --color-sage: var(--sage);
+        ring: var(--ring);
+        --radius-sm: calc(var(--radius) * 0.6);
+        --radius-md: calc(var(--radius) * 0.8);
+        --radius-lg: var(--radius);
+        --radius-xl: calc(var(--radius) * 1.4);
+        --radius-2xl: calc(var(--radius) * 1.8);
+        --radius-3xl: calc(var(--radius) * 2.2);
+        --radius-4xl: calc(var(--radius) * 2.6);
+    }
+
+    /* هاله سبز وسط هر بخش */
+    .fp-glow {
+        position: relative;
+        isolation: isolate;
+    }
+
+    .fp-glow::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background: radial-gradient(52% 48% at 50% 46%,
+                rgba(22, 163, 74, 0.14) 0%,
+                rgba(22, 163, 74, 0.05) 45%,
+                transparent 72%);
+    }
+
+    .dark .fp-glow::before {
+        background: radial-gradient(52% 48% at 50% 46%,
+                rgba(57, 255, 106, 0.18) 0%,
+                rgba(34, 197, 94, 0.08) 45%,
+                transparent 72%);
+    }
+
+    /* =============================================================
+   تم روشن
+============================================================= */
+    :root {
+        /* پایه shadcn */
+        --background: #d8e9c9 !important;
+        --foreground: oklch(0.145 0 0) !important;
+        --card: #8DA68E;
+        --border: #8DA68E;
+        --input: oklch(0.922 0 0);
+        --ring: oklch(0.708 0 0);
+        --forest: #1c3a27;
+        --sage: #8da68e;
+        --hero-card: #ffffff;
+        --hero-line: #e3efe8;
+        --hero-line-strong: var(--sage);
+        --hero-text: var(--forest);
+        --hero-muted: #4a635a;
+        /* اکسنت هیرو */
+        --hero-accent: #16a34a;
+        --hero-accent-hover: #12863d;
+        --hero-accent-ink: #ffffff;
+        /* بج و دکمه‌ها */
+        --hero-badge-bg: var(--forest);
+        --btn-soft-line: rgba(141, 166, 142, 0.5);
+        --btn-soft-glow: none;
+        --btn-glow: 0 12px 26px -16px rgba(22, 163, 74, 0.55);
+        /* سطح بخش‌های صفحه */
+        --page: #fff8e2;
+        --wash: #b7eecc;
+        --surface: #ffffff;
+        --line: #e3efe8;
+        --hero-meta: #5f7a66;
+    }
+
+    /* =============================================================
+   تم تیره
+============================================================= */
+    .dark {
+        /* پایه shadcn */
+        --background: oklch(0.145 0 0) !important;
+        --foreground: #F1F3EE !important;
+        --card: oklch(0.205 0 0);
+        --card-foreground: oklch(0.985 0 0);
+        --popover: oklch(0.205 0 0);
+        --popover-foreground: oklch(0.985 0 0);
+        --primary: #8DA68E !important;
+        --primary-foreground: #2E3330 !important;
+        --secondary: #2E3330 !important;
+        --secondary-foreground: oklch(0.985 0 0);
+        --muted: oklch(0.269 0 0);
+        --muted-foreground: oklch(0.708 0 0);
+        --accent: oklch(0.269 0 0);
+        --accent-foreground: oklch(0.985 0 0);
+        --destructive: oklch(0.704 0.191 22.216);
+        --border: #8DA68E;
+        --input: oklch(1 0 0 / 15%);
+        --ring: oklch(0.556 0 0);
+
+        /* سطح و متن هیرو */
+        --hero-card: #050f0a;
+        --hero-line: rgba(57, 255, 106, 0.14);
+        --hero-line-strong: rgba(141, 166, 142, 0.45);
+        --hero-text: #eaf7f0;
+        --hero-muted: #9aa79c;
+
+        /* اکسنت هیرو */
+        --hero-accent: #39ff6a;
+        --hero-accent-hover: #5cff85;
+        --hero-accent-ink: #042315;
+
+        /* بج و دکمه‌ها */
+        --hero-badge-bg: rgba(57, 255, 106, 0.12);
+        --hero-badge-ink: #39ff6a;
+        --btn-soft-bg: rgba(57, 255, 106, 0.05);
+        --btn-soft-line: rgba(57, 255, 106, 0.55);
+        --btn-soft-glow: 0 0 22px -4px rgba(57, 255, 106, 0.35);
+        --btn-glow: 0 12px 30px -10px rgba(57, 255, 106, 0.55);
+
+        /* سطح بخش‌های صفحه */
+        --page: #050f0a;
+        --wash: #06130c;
+        --surface: #0b1e16;
+        --line: rgba(57, 255, 106, 0.14);
+        --hero-meta: var(--sage);
+    }
+
+
+    /* =============================================================
+   یوتیلیتی‌های عمومی
+============================================================= */
+    @layer components {
+        .flexC {
+            display: flex !important;
+            place-content: center !important;
+            place-items: center !important;
+        }
+
+        .navLink {
+            @apply flex h-11 items-center px-4 text-sm transition-colors max-sm:flex-1 max-sm:px-2 max-sm:text-[13px] dark:text-background;
+        }
+    }
+
+    /* =============================================================
+     نوبار
+  ============================================================= */
+    .navbarTop {
+        position: fixed !important;
+        left: 10% !important;
+        top: 20px !important;
+        right: 10% !important;
+        z-index: 200 !important;
+    }
+
+    .navbarB {
+        position: fixed;
+        left: 5%;
+        top: 85% !important;
+        right: 5%;
+        z-index: 50 !important;
+    }
+
+    .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+    }
+
+    /* =============================================================
+     کلاس‌های رنگ
+  ============================================================= */
+    .TextDarkG {
+        color: #1c3a27;
+    }
+
+    .TextWG {
+        color: #F1F3EE;
+    }
+
+    .bgDarkG {
+        background-color: #1C3A27;
+    }
+
+    /* =============================================================
+     هیرو
+  ============================================================= */
+    .hero-surface {
+        background-color: var(--hero-card);
+        border: 1px solid var(--hero-line);
+    }
+
+    .btn-soft:hover {
+        background-color: var(--btn-soft-bg);
+        border-color: var(--btn-soft-ink);
+        box-shadow: 0 0 28px -2px rgba(57, 255, 106, 0.5);
+    }
+
+    outline-offset: 3px;
+}
+
+/* داشبورد */
+:root {
+    --background: #d8e9c9;
+    --dash-bg: #d8e9c9;
+    --dash-surface: #f4faf6;
+    --dash-line: #dcece2;
+    --dash-chip-bg: #e6f3ea;
+    --nav-menu-bg: rgba(255, 248, 226, 0.97);
+    --nav-danger: #b3261e;
+    --nav-danger-bg: rgba(179, 38, 30, 0.1);
+
+    /* داشبورد */
+    --dash-bg: #fff8e2;
+    --dash-surface: #ffffff;
+    --dash-line: #e3efe8;
+    --dash-ink: var(--hero-text);
+    --dash-muted: var(--hero-muted);
+    --dash-chip-bg: #eef7ef;
+    --dash-chip-ink: var(--hero-text);
+    --dash-pop-bg: #ffffff;
+    --dash-shadow: 0 20px 50px -34px rgba(28, 58, 39, 0.35);
+    --dash-side-image: linear-gradient(180deg, #1c3a27 0%, #13291c 100%);
+    --dash-side-line: rgba(141, 166, 142, 0.28);
+    --dash-side-ink: rgba(234, 247, 240, 0.72);
+    --dash-side-ink-strong: #ffffff;
+    --dash-side-hover: rgba(255, 255, 255, 0.08);
+    --dash-side-active-bg: rgba(141, 166, 142, 0.3);
+    --dash-side-active-ink: #ffffff;
+    --dash-side-mark: #b7eecc;
+}
+
+.fp-page {
+    background-color: var(--page);
+}
+
+/* =============================================================
+}
+
+/* =============================================================
+ داشبورد
+============================================================= */
+.dash-page {
+    background-color: var(--dash-bg);
+    color: var(--dash-ink);
+}
+
+.dash-side {
+    background-image: var(--dash-side-image);
+    border-inline-end: 1px solid var(--dash-side-line);
+    box-shadow: var(--dash-shadow);
+}
+
+.dash-logo {
+    color: var(--dash-side-ink-strong);
+}
+
+.dash-logo-mark {
+    color: var(--dash-side-mark);
+}
+
+.dash-link {
+    color: var(--dash-side-ink);
+    border-radius: calc(var(--radius) * 1.6);
+    transition: color 160ms ease, background-color 160ms ease;
+}
+
+.dash-link:hover {
+    color: var(--dash-side-ink-strong);
+    background-color: var(--dash-side-hover);
+}
+
+.dash-link[data-active="true"] {
+    color: var(--dash-side-active-ink);
+    background-color: var(--dash-side-active-bg);
+    font-weight: 600;
+}
+
+.dash-tip {
+    color: var(--nav-accent-ink);
+    background-color: var(--nav-accent-bg);
+    border: 1px solid var(--nav-line);
+}
+
+.dash-control {
+    color: var(--dash-ink);
+    background-color: var(--dash-surface);
+    border: 1px solid var(--dash-line);
+    transition: color 160ms ease, background-color 160ms ease;
+}
+
+.dash-control:hover {
+    color: var(--dash-ink);
+    background-color: var(--dash-chip-bg);
+}
+
+.dash-pop {
+    color: var(--dash-ink);
+    background-color: var(--dash-pop-bg);
+    border: 1px solid var(--dash-line);
+}
+
+.dash-card {
+    color: var(--dash-ink);
+    background-color: var(--dash-surface);
+    border: 1px solid var(--dash-line);
+    box-shadow: var(--dash-shadow);
+}
+
+.dash-heading {
+    color: var(--dash-ink);
+}
+
+.dash-muted {
+    color: var(--dash-muted);
+}
+
+.dash-chip {
+    color: var(--dash-chip-ink);
+    background-color: var(--dash-chip-bg);
+}
+
+.dash-panel-muted {
+    color: rgba(234, 247, 240, 0.75);
+}
+
+/* =============================================================
+ تقویم شمسی
+============================================================= */
+.green-dark-calendar.rmdp-wrapper {
+    background-color: #173629 !important;
+    color: #ffffff !important;
+    background-color: var(--dash-pop-bg) !important;
+    color: var(--dash-ink) !important;
+    box-shadow: none !important;
+    border-radius: 0.75rem !important;
+    padding: 8px;
+
+    .green-dark-calendar .rmdp-header-values,
+    .green-dark-calendar .rmdp-day span {
+        color: #ffffff !important;
+        color: var(--dash-ink) !important;
+    }
+
+    .green-dark-calendar .rmdp-week-day {
+        color: #49a385 !important;
+        color: var(--hero-meta) !important;
+        font-weight: 600;
+    }
+
+    .green-dark-calendar .rmdp-day:not(.rmdp-disabled):not(.rmdp-day-hidden) span:hover {
+        background-color: #244c3c !important;
+        color: #ffffff !important;
+        background-color: var(--dash-chip-bg) !important;
+        color: var(--dash-ink) !important;
+    }
+
+    .green-dark-calendar .rmdp-day.rmdp-selected span:not(.highlight) {
+        background-color: #49a385 !important;
+        color: #0e261c !important;
+        background-color: var(--hero-accent) !important;
+        color: var(--hero-accent-ink) !important;
+        font-weight: bold;
+    }
+
+    .green-dark-calendar .rmdp-day.rmdp-today span {
+        background-color: #244c3c !important;
+        border: 1px solid #49a385;
+        background-color: var(--dash-chip-bg) !important;
+        border: 1px solid var(--hero-accent);
+    }
+
+    .green-dark-calendar .rmdp-arrow {
+        border-color: #49a385 !important;
+        border-color: var(--hero-accent) !important;
+    }
+
+    /* منوی کشویی کاربر */
+    .nav-menu {
+        color: var(--nav-ink);
+        background-color: var(--nav-menu-bg);
+        border: 1px solid var(--nav-line);
+        box-shadow: var(--nav-shadow);
+        -webkit-backdrop-filter: blur(14px);
+        backdrop-filter: blur(14px);
+    }
+
+    .nav-menu-item {
+        color: var(--nav-ink);
+        border-radius: calc(var(--radius) * 1.6);
+        transition: color 160ms ease, background-color 160ms ease;
+    }
+
+    .nav-menu-item:hover,
+    .nav-menu-item:focus,
+    .nav-menu-item[data-highlighted] {
+        color: var(--nav-ink);
+        background-color: var(--nav-hover-bg);
+    }
+
+    .nav-menu-danger,
+    .nav-menu-danger:hover,
+    .nav-menu-danger:focus,
+    .nav-menu-danger[data-highlighted] {
+        color: var(--nav-danger);
+    }
+
+    .nav-menu-danger:hover,
+    .nav-menu-danger:focus,
+    .nav-menu-danger[data-highlighted] {
+        color: var(--nav-danger);
+        background-color: var(--nav-danger-bg);
+    }
+
+    .nav-menu-sep {
+        background-color: var(--nav-line);
+    }
+
+    .nav-menu-danger svg {
+        color: inherit;
+    }
+
+    .nav-menu-sep {
+        background-color: var(--nav-line);
+    }
+
+    /* نوبار */
+    .nav-menu {
+        --nav-bg: rgba(255, 248, 226, 0.82);
+        --nav-line: rgba(141, 166, 142, 0.45);
+        --nav-ink: #1c3a27;
+        --nav-ink-soft: #4a635a;
+        --nav-hover-bg: rgba(141, 166, 142, 0.18);
+        --nav-accent-bg: #1c3a27;
+        --nav-accent-ink: #ffffff;
+        --nav-shadow: 0 18px 40px -30px rgba(28, 58, 39, 0.45);
+    }
+
+    .navLink:hover {
+        color: var(--nav-ink);
+        background-color: var(--nav-hover-bg);
+    }
+
+    .navbar-shell {
+        background-color: var(--nav-bg);
+        border: 1px solid var(--nav-line);
+        box-shadow: var(--nav-shadow);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+    }
+
+    /* دکمه‌های آیکونی نوبار (بازنویسی variant="outline") */
+    .nav-btn {
+        color: var(--nav-ink);
+        background-color: transparent;
+        border: 1px solid var(--nav-line);
+    }
+
+    .nav-btn:hover {
+        color: var(--nav-ink);
+        background-color: var(--nav-hover-bg);
+        border-color: var(--nav-line);
+    }
